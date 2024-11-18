@@ -192,420 +192,58 @@ country_query = f"""
 # Slider to set limit of result
 
 #Sidebar for chart type selection
-# st.sidebar.subheader("Chart Type")
-# chart_types = {
-#     "Bar Chart": st.sidebar.checkbox("Bar Chart"),
-#     "Pie Chart": st.sidebar.checkbox("Pie Chart"),
-#     "Line Chart": st.sidebar.checkbox("Line Chart"),
-#     "Histogram": st.sidebar.checkbox("Histogram"),
-#     "Radar Chart": st.sidebar.checkbox("Radar Chart")
+st.sidebar.subheader("Chart Type")
+chart_types = {
+    "Bar Chart": st.sidebar.checkbox("Bar Chart"),
+    "Pie Chart": st.sidebar.checkbox("Pie Chart"),
+    "Line Chart": st.sidebar.checkbox("Line Chart"),
+    "Histogram": st.sidebar.checkbox("Histogram"),
+    "Radar Chart": st.sidebar.checkbox("Radar Chart")
 # }
 
 # # st.sidebar.radio('',['Finance','Supply chain',
 # # 'Revenue growth','IT ops', 'SDLC'])
 
-# limit = st.sidebar.slider('Limit Of Output', 0, 100, 10)
+limit = st.sidebar.slider('Limit Of Output', 0, 100, 10)
 
-questions=['what are the potential options to reduce churn by 2%','what are the options to bring down marketing costs','key options to increase customer satisfaction','how to increase customer acquisition by 20%','how to reduce acquisition cost','how to increase retention','increase market share & profitability','what was the total sales revenue for the last quarter','can you segment our customers based on their purchase frequency','what are our most frequent purchasers buying that our least frequent purchasers aren’t',
-           'are there any other distinguishing factors between the purchase frequency segments','what is the overall sentiment of our customer reviews','can you summarize the key points of feedback from our customer reviews','is there any missing data or other questions that we should be asking for customer feedback on that could improve analysis',
-          'What are top 3 levers to reduce capital expenditures for our biggest projects'
-          'Please provide key short-term and long-term cost reduction initiatives that and associated cost reduction potential',
-          'What are the key factors for margin improvement in the next 3 quarters',
-          'Highlight the key impediments impacting the enforcement of internal controls for finance',
-          'Summarize the internal finance audit findings and associated potential for reducing the compliance costs',
-          '']
-answers="""
-#####################################
-What is the overall sentiment of our customer reviews? 
 
-·  Positive Reviews: 700 (70%) 
 
-·  Neutral Reviews: 200 (20%) 
-
-·  Negative Reviews: 100 (10%) 
-
-Overall Sentiment score = 0.6 which indicates positive sentiment 
-########################################################################
-
-What are the potential options to reduce churn by 2%? 
-
-Churn Analysis Overview 
-
-Churn Reason 
-
-Number of Customers 
-
-Percentage of Total Churned 
-
-Product Quality 
-
-500 
-
-25% 
-
-Poor Customer Service 
-
-400 
-
-20% 
-
-High Costs 
-
-300 
-
-15% 
-
-Lack of Product Availability 
-
-250 
-
-12.5% 
-
-Delivery Issues 
-
-200 
-
-10% 
-
-Identify Key Churn Drivers 
-
-The top three reasons for churn account for 60% of total churn: 
-
-Product Quality (25%) 
-
-Poor Customer Service (20%) 
-
-High Costs (15%) 
-
-
-Suggested Strategies to Reduce Churn 
-
-1. Improve Product Quality:: Reducing churn due to customer service issues by 40% could retain 160 customers. 
-
-2. Enhance Customer Service : Reducing churn due to customer service issues by 40% could retain 160 customers. 
-
-3. Address High Costs: If addressing cost-related churn reduces it by 30%, this would retain 90 customers. 
-
-
-################################################################ 
-
-What are the options to bring down marketing costs? 
-
- Initial Marketing Spend Across Channels: 
-
-Digital Ads: $500,000 
-
-In-Store Promotions: $200,000 
-
-Email Campaigns: $150,000 
-
-Social Media Ads: $100,000 
-
-Ways to optimize marketing costs are 
-
-Targeted Campaigns: +$100,000 savings by focusing on high-value customers. 
-
-Digital Advertising Efficiency: +$75,000 savings by reallocating budget from low-conversion channels. 
-
-In-Store and Online Integration: +$50,000 savings from unified campaign efforts. 
-
-Social Media Optimization: +$30,000 savings by leveraging user-generated content. 
-
-Total Projected Cost Reduction: $355,000 
- 
-
-################################################################ 
-
-Key options to increase customer satisfaction 
-
- 
-
-Customer Complaints 
-
-Number of Customers 
-
-Product Quality 
-
-500 
-
-Poor Customer Service 
-
-400 
-
-Payment Issues 
-
-300 
-
-Inflexible returns policy 
-
-250 
-
-Delivery Issues 
-
-200 
-
-Based on feedback & complaints from customers, the top 5 options to increase customer satisfaction are 
-
-Enhance Product Quality: Reducing product returns by 5% on a customer base of 50,000 could retain approximately 2,500 customers. 
-
-Improve Customer Service: If current satisfaction scores correlate to a customer retention of 75%, improving this to 85% could increase overall satisfaction-related retention by 10%. 
-
-Flexible Payment and Shipping Options: If the current conversion rate results in 7,500 sales, increasing this to 12,500 could add another 5,000 transactions annually, equating to $500,000 in additional sales. 
-
-User-Friendly Returns Policy: A 15% reduction in dissatisfaction could lead to retaining an additional 1,000 customers. 
-
-Streamlined Shipping process: Introduce multiple payment methods and flexible shipping options.
-#################################################### 
-Can you summarize the key points of feedback from our customer reviews? 
-
-Key Points of Customer Feedback 
-
-Positive Feedback 
-
-Product Quality 
-
-Many customers praised the quality of the products, noting that they met or exceeded expectations. High-quality essentials and seasonal items were frequently highlighted. 
-
-Customer Service 
-
-Positive comments about responsive and helpful customer service representatives. Customers appreciated quick resolutions to issues and friendly interactions. 
-
-User Experience 
-
-Customers found the online shopping experience easy to navigate, with a user-friendly interface and efficient checkout process. 
-
-Promotions and Discounts 
-
-Customers enjoyed the value offered through promotions, particularly buy-one-get-one deals and loyalty rewards. This incentivized them to make additional purchases. 
-
-Fast Delivery 
-
-Many reviews mentioned satisfaction with quick shipping times, which enhanced the overall shopping experience. 
-
-Neutral Feedback 
-
-Product Variety 
-
-Some customers noted the variety of products available but expressed a desire for more options in specific categories, particularly seasonal or specialty items. 
-
-Pricing Concerns 
-
-Neutral comments indicated that while some products were seen as fairly priced, others were perceived as slightly higher than competitors, but customers appreciated the quality. 
-
-Website Features 
-
-Feedback on website features was mixed. While many found the site easy to use, some suggested improvements for better filtering options and product search capabilities. 
-
-Negative Feedback 
-
-Stock Availability 
-
-Several customers expressed frustration about out-of-stock items, particularly during peak shopping seasons. This led to disappointment and potential loss of sales. 
-
-Return Process 
-
-Negative comments highlighted challenges with the return process, including delays and lack of clarity on return policies, which affected customer satisfaction. 
-
-Inconsistent Product Information 
-
-Some customers reported inconsistencies in product descriptions and images compared to the actual items received, leading to dissatisfaction. 
-
-Delivery Issues 
-
-A few reviews mentioned issues with shipping delays or damaged products upon arrival, impacting overall trust in the service. 
-
-################################################################ 
-
-Key options to increase customer satisfaction 
-
- 
-
-Customer Complaints 
-
-Number of Customers 
-
-Product Quality 
-
-500 
-
-Poor Customer Service 
-
-400 
-
-Payment Issues 
-
-300 
-
-Inflexible returns policy 
-
-250 
-
-Delivery Issues 
-
-200 
-
-Based on feedback & complaints from customers, the top 5 options to increase customer satisfaction are 
-
-Enhance Product Quality: Reducing product returns by 5% on a customer base of 50,000 could retain approximately 2,500 customers. 
-
-Improve Customer Service: If current satisfaction scores correlate to a customer retention of 75%, improving this to 85% could increase overall satisfaction-related retention by 10%. 
-
-Flexible Payment and Shipping Options: If the current conversion rate results in 7,500 sales, increasing this to 12,500 could add another 5,000 transactions annually, equating to $500,000 in additional sales. 
-
-User-Friendly Returns Policy: A 15% reduction in dissatisfaction could lead to retaining an additional 1,000 customers. 
-
-Streamlined Shipping process: Introduce multiple payment methods and flexible shipping options. 
-
-###################################
-1. Top Reasons for Product Returns and Reduction Strategies
-
-Reason for Return	Number of Returns	Percentage of Total Returns	Suggested Improvement	Expected Reduction in Returns (%)
-Product Quality Issues	2,000	40%	Quality control enhancement	15%
-Incorrect Item Shipped	1,250	25%	Inventory accuracy improvement	10%
-Product Not as Described	1,000	20%	Improved descriptions and images	8%
-Delivery Damage	750	15%	Strengthen packaging	12%
-Delayed Returns Processing	500	10%	Faster return processing	5%
-###################################
-2. Customer Satisfaction Ratings by Product Category
-
-Product Category	Total Reviews	Positive Reviews	Satisfaction Rating (%)	Improvement Focus
-Personal Care Products	5,000	4,500	90%	Increase product range
-Home Care Products	4,000	3,400	85%	Enhance fragrance options
-Food & Beverages	3,500	2,800	80%	Maintain ingredient quality
-Health & Wellness	2,500	2,000	80%	Improve packaging
-Baby Care Products	1,200	960	80%	Expand variety in formulas
-###################################
-3. Optimal Product Pricing Strategies
-
-Product Bundle Type	Current Price	Suggested Price	Average Sales Increase (%)	Profit Margin Increase (%)
-Personal Care Bundle	$25	$20	15%	10%
-Home Essentials Kit	$30	$27	12%	8%
-Family Food Pack	$40	$38	10%	7%
-Health Supplements Duo	$50	$47	8%	6%
-Baby Care Essentials	$60	$55	5%	4%
-###################################
-4. Primary Factors Affecting Product Quality Perception
-
-Quality Factor	Customer Complaints	Percentage of Total Feedback	Improvement Action	Expected Quality Score Increase (%)
-Ingredient Quality	800	35%	Increase ingredient transparency	10%
-Product Durability	600	25%	Enhance durability testing	8%
-Packaging Quality	500	20%	Use eco-friendly, durable materials	7%
-Product Scent Consistency	300	13%	Standardize scent formulas	5%
-Product Size Consistency	200	7%	Standardize packaging sizes	3%
-###################################
-5. Impact of Product Variety on Customer Loyalty
-
-Customer Segment	Preferred Product Category	Number of Purchases	Repeat Purchase Increase (%)	Feedback on Variety
-Frequent Buyers	Personal Care	20,000	25%	Positive
-Moderate Buyers	Home Care	15,000	20%	Neutral
-Light Buyers	Food & Beverages	12,000	10%	Positive
-Seasonal Shoppers	Holiday Specials	8,000	18%	Very Positive
-Infrequent Shoppers	Basic Essentials	5,000	5%	Neutral
-###################################
-6. Most Effective Customer Feedback Channels
-
-Feedback Channel	Responses Collected	Percentage of Total Feedback	Engagement Rate (%)	Insight Frequency (%)
-Online Reviews	3,500	40%	60%	70%
-Post-Purchase Surveys	2,500	30%	45%	50%
-Social Media Polls	1,000	20%	50%	60%
-Customer Service Calls	750	5%	30%	40%
-Focus Groups	250	5%	70%	80%
-###################################
-7. Main Challenges in Achieving Higher Product Ratings
-
-Challenge	Customer Complaints	Percentage of Total Complaints	Suggested Solution	Expected Improvement (%)
-Delivery Damage	1,200	25%	Use improved packaging	15%
-Product Transparency	1,000	20%	Clarify product information	10%
-Slow Complaint Response	750	15%	Implement faster support response	8%
-Stock Availability	600	12%	Better stock management	10%
-Pricing Concerns	450	8%	Maintain competitive pricing	5%
-###################################
-8. Seasonal Demand Strategies for Product Sales
-
-Strategy	Product Category	Average Sales Increase (%)	Cost of Implementation ($)	Customer Engagement Increase (%)
-Holiday-Themed Bundles	Personal Care	30%	10,000	20%
-Limited Edition Products	Home Care	25%	8,000	18%
-Seasonal Ads	Food & Beverages	20%	5,000	15%
-Targeted Discounts	Health & Wellness	15%	7,000	12%
-Loyalty Rewards	Baby Care	10%	3,000	10%
-###################################
-9. Customer Segments Based on Purchase Frequency and Product Preferences
-
-Segment	Purchase Frequency	Product Preferences	Engagement with Promotions	Average Order Value ($)
-Frequent Buyers	5+ per year	High-quality essentials	High	50
-Moderate Buyers	3-4 per year	Promotional bundles	Moderate	40
-Light Buyers	1-2 per year	Essentials on sale	Low	30
-Seasonal Shoppers	1-2 per season	Seasonal items	Very High	60
-Infrequent Shoppers	<1 per year	Basics only	Minimal	25
-###################################
-10. Impact of Product Innovation on Customer Retention
-
-Customer Group	Engaged with New Products	Retention Rate Increase (%)	Average Purchase Value ($)	Satisfaction Increase (%)
-New Customers	5,000	20%	35	15%
-Repeat Customers	10,000	15%	45	10%
-High-Value Customers	2,500	25%	60	20%
-Moderate-Value Customers	7,500	10%	40	8%
-Low-Value Customers	12,500	8%	30	5%
-###################################
-"""
 # Handle user input and query generation
 if user_input:
-    
     st.session_state.messages.append({"role": "user", "content": user_input})
-    mock_question=True
-    # for i in questions:
-    if True:
-        # if i.strip().lower()==user_input.strip().lower() :
-        if True:
-            # mock_question=True
-            prompt=f"""a user is asking questions. user questions={user_input}
-            
-            answer the user on the basis of following following question answer. write full answer of question {user_input} as it is with data(table).dont make any changes in answer.
-            {answers}.
-            #########################
-            dont add any additional comment just answer the questions if answer having table u can use table with answers.
-            use bold for heading and bullet points as well for better representaions of answers.
-            """
-            
-            with st.spinner("Please Wait..."):
-                result = qgen(prompt)
-                st.session_state.messages.append({"role": "assistant", "content":result, "summary": ''})
+    my_prompt = f"""act as a sql query writer for BigQuery database. We have the following schema:
+    project_id = "data-driven-cx"
+    dataset_id = "EDW_ECOM"
+    {st.session_state.schema[0]}
+    Write a SQL query for user input
+    user input-{user_input}.
+    Write only the executable query without any comments or additional text.
+    """
+    
+    with st.spinner("Generating query..."):
+        final_query = qgen(my_prompt)
+        cleaned_query = final_query.replace("```sql", "").replace("```", "").strip()
+    
+    try:
+        with st.spinner("Executing query..."):
+            data = execute_query(cleaned_query)
+        st.session_state.messages.append({"role": "assistant", "content": final_query, "results": data})
+    except Exception as e:
+        st.error(f"Query execution error: {e}")
+        if "editable_sql" not in st.session_state:
+            st.session_state.editable_sql = final_query
 
+    # Display the SQL query editor and execution button if there's a query to edit
+    if "editable_sql" in st.session_state:
+        st.write("## Edit and Re-Execute the Query")
+        edited_sql = st.text_area("Edit Query", st.session_state.editable_sql)
         
-    if mock_question==False:
-        my_prompt = f"""act as a sql query writer for BigQuery database. We have the following schema:
-        project_id = "data-driven-cx"
-        dataset_id = "EDW_ECOM"
-        {st.session_state.schema[0]}
-        Write a SQL query for user input
-        user input-{user_input}.
-        Write only the executable query without any comments or additional text.
-        """
-        
-        with st.spinner("Generating query..."):
-            final_query = qgen(my_prompt)
-            cleaned_query = final_query.replace("```sql", "").replace("```", "").strip()
-        
-        try:
+        if st.button('Submit'):
             with st.spinner("Executing query..."):
-                data = execute_query(cleaned_query)
-            st.session_state.messages.append({"role": "assistant", "content": final_query, "results": data})
-        except Exception as e:
-            st.error(f"Query execution error: {e}")
-            if "editable_sql" not in st.session_state:
-                st.session_state.editable_sql = final_query
-
-        # Display the SQL query editor and execution button if there's a query to edit
-        if "editable_sql" in st.session_state:
-            st.write("## Edit and Re-Execute the Query")
-            edited_sql = st.text_area("Edit Query", st.session_state.editable_sql)
-            
-            if st.button('Submit'):
-                with st.spinner("Executing query..."):
-                    data = execute_query(edited_sql)
-                if data is not None:
-                    st.session_state.messages.append({"role": "assistant", "content": edited_sql, "results": data})
-                    st.session_state.editable_sql = edited_sql
+                data = execute_query(edited_sql)
+            if data is not None:
+                st.session_state.messages.append({"role": "assistant", "content": edited_sql, "results": data})
+                st.session_state.editable_sql = edited_sql
 
 # Display all the chat messages
 for message in st.session_state.messages:
@@ -621,47 +259,47 @@ for message in st.session_state.messages:
 
 
 
-# # Visualization section
-# if "messages" in st.session_state:
-#     # Find the last message that contains results
-#     last_data = None
-#     for message in reversed(st.session_state.messages):
-#         if "results" in message:
-#             last_data = message["results"]
-#             break
+# Visualization section
+if "messages" in st.session_state:
+    # Find the last message that contains results
+    last_data = None
+    for message in reversed(st.session_state.messages):
+        if "results" in message:
+            last_data = message["results"]
+            break
     
-#     if last_data is not None and not last_data.empty:
-#         st.write("## Data Visualization")
+    if last_data is not None and not last_data.empty:
+        st.write("## Data Visualization")
 
-#         numeric_columns = last_data.select_dtypes(include=['float64', 'int64']).columns
-#         non_numeric_columns = last_data.select_dtypes(exclude=['float64', 'int64']).columns
+        numeric_columns = last_data.select_dtypes(include=['float64', 'int64']).columns
+        non_numeric_columns = last_data.select_dtypes(exclude=['float64', 'int64']).columns
 
-#         for chart_type, selected in chart_types.items():
-#             if selected:
-#                 st.write("## Data Visualization")
-#                 st.write(f"### {chart_type}")
-#                 if chart_type == "Bar Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
-#                     fig = px.bar(last_data, x=non_numeric_columns[0], y=numeric_columns[0], color=non_numeric_columns[0])
-#                     st.plotly_chart(fig)
-#                 elif chart_type == "Pie Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
-#                     fig = px.pie(last_data, values=numeric_columns[0], names=non_numeric_columns[0])
-#                     st.plotly_chart(fig)
-#                 elif chart_type == "Line Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
-#                     fig = px.line(last_data, x=non_numeric_columns[0], y=numeric_columns[0])
-#                     st.plotly_chart(fig)
-#                 elif chart_type == "Histogram" and len(numeric_columns) >= 1:
-#                     fig = px.histogram(last_data, x=numeric_columns[0])
-#                     st.plotly_chart(fig)
-#                 elif chart_type == "Radar Chart" and len(numeric_columns) > 1:
-#                     fig = go.Figure()
-#                     fig.add_trace(go.Scatterpolar(
-#                         r=last_data[numeric_columns].mean().values,
-#                         theta=numeric_columns,
-#                         fill='toself'
-#                     ))
-#                     fig.update_layout(polar=dict(radialaxis=dict(visible=True)))
-#                     st.plotly_chart(fig)
-#                 else:
-#                     st.warning(f"Not enough appropriate columns to plot a {chart_type}.")
-#     else:
-#         st.write("")
+        for chart_type, selected in chart_types.items():
+            if selected:
+                st.write("## Data Visualization")
+                st.write(f"### {chart_type}")
+                if chart_type == "Bar Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
+                    fig = px.bar(last_data, x=non_numeric_columns[0], y=numeric_columns[0], color=non_numeric_columns[0])
+                    st.plotly_chart(fig)
+                elif chart_type == "Pie Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
+                    fig = px.pie(last_data, values=numeric_columns[0], names=non_numeric_columns[0])
+                    st.plotly_chart(fig)
+                elif chart_type == "Line Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
+                    fig = px.line(last_data, x=non_numeric_columns[0], y=numeric_columns[0])
+                    st.plotly_chart(fig)
+                elif chart_type == "Histogram" and len(numeric_columns) >= 1:
+                    fig = px.histogram(last_data, x=numeric_columns[0])
+                    st.plotly_chart(fig)
+                elif chart_type == "Radar Chart" and len(numeric_columns) > 1:
+                    fig = go.Figure()
+                    fig.add_trace(go.Scatterpolar(
+                        r=last_data[numeric_columns].mean().values,
+                        theta=numeric_columns,
+                        fill='toself'
+                    ))
+                    fig.update_layout(polar=dict(radialaxis=dict(visible=True)))
+                    st.plotly_chart(fig)
+                else:
+                    st.warning(f"Not enough appropriate columns to plot a {chart_type}.")
+    else:
+        st.write("")
