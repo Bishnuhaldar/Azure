@@ -107,14 +107,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # App title and description
-st.markdown('<h1>Strategic AI Guidance Engine🤖</h1>', unsafe_allow_html=True)
+st.markdown('<h1>Conversational Datalake🤖</h1>', unsafe_allow_html=True)
 
-# # Path to your logo
+# Path to your logo
 logo_path2 = "gcp+capg+ikea_azure.png"
 
 # Display the logo in the sidebar
-st.sidebar.image(logo_path2,use_container_width=True)
-# st.sidebar.title('SAGE')
+st.sidebar.image(logo_path2, use_column_width=True)
 
 # Initialize session state for messages
 if "messages" not in st.session_state:
@@ -191,31 +190,29 @@ country_query = f"""
 
 # Slider to set limit of result
 
-#Sidebar for chart type selection
+# Sidebar for chart type selection
 st.sidebar.subheader("Chart Type")
 chart_types = {
     "Bar Chart": st.sidebar.checkbox("Bar Chart"),
     "Pie Chart": st.sidebar.checkbox("Pie Chart"),
     "Line Chart": st.sidebar.checkbox("Line Chart"),
     "Histogram": st.sidebar.checkbox("Histogram"),
-    "Radar Chart": st.sidebar.checkbox("Radar Chart") }
-
-# # st.sidebar.radio('',['Finance','Supply chain',
-# # 'Revenue growth','IT ops', 'SDLC'])
+    "Radar Chart": st.sidebar.checkbox("Radar Chart")
+}
 
 limit = st.sidebar.slider('Limit Of Output', 0, 100, 10)
-
-
 
 # Handle user input and query generation
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
+    
     my_prompt = f"""act as a sql query writer for BigQuery database. We have the following schema:
     project_id = "data-driven-cx"
     dataset_id = "EDW_ECOM"
-    {st.session_state.schema[0]}
+       {st.session_state.schema[0]}
     Write a SQL query for user input
     user input-{user_input}.
+    set limit to {limit}.
     Write only the executable query without any comments or additional text.
     """
     
@@ -232,17 +229,17 @@ if user_input:
         if "editable_sql" not in st.session_state:
             st.session_state.editable_sql = final_query
 
-    # Display the SQL query editor and execution button if there's a query to edit
-    if "editable_sql" in st.session_state:
-        st.write("## Edit and Re-Execute the Query")
-        edited_sql = st.text_area("Edit Query", st.session_state.editable_sql)
-        
-        if st.button('Submit'):
-            with st.spinner("Executing query..."):
-                data = execute_query(edited_sql)
-            if data is not None:
-                st.session_state.messages.append({"role": "assistant", "content": edited_sql, "results": data})
-                st.session_state.editable_sql = edited_sql
+# Display the SQL query editor and execution button if there's a query to edit
+if "editable_sql" in st.session_state:
+    st.write("## Edit and Re-Execute the Query")
+    edited_sql = st.text_area("Edit Query", st.session_state.editable_sql)
+    
+    if st.button('Submit'):
+        with st.spinner("Executing query..."):
+            data = execute_query(edited_sql)
+        if data is not None:
+            st.session_state.messages.append({"role": "assistant", "content": edited_sql, "results": data})
+            st.session_state.editable_sql = edited_sql
 
 # Display all the chat messages
 for message in st.session_state.messages:
@@ -251,10 +248,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(f"<div class='card'>{message['content']}</div>", unsafe_allow_html=True)
         if "results" in message:
-            # if not message["results"].empty: 
             st.dataframe(message["results"])
-        # if "summary" in message:
-        #     st.write(message["summary"])
 
 
 
@@ -275,7 +269,6 @@ if "messages" in st.session_state:
 
         for chart_type, selected in chart_types.items():
             if selected:
-                st.write("## Data Visualization")
                 st.write(f"### {chart_type}")
                 if chart_type == "Bar Chart" and len(numeric_columns) >= 1 and len(non_numeric_columns) >= 1:
                     fig = px.bar(last_data, x=non_numeric_columns[0], y=numeric_columns[0], color=non_numeric_columns[0])
