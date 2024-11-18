@@ -198,8 +198,7 @@ chart_types = {
     "Pie Chart": st.sidebar.checkbox("Pie Chart"),
     "Line Chart": st.sidebar.checkbox("Line Chart"),
     "Histogram": st.sidebar.checkbox("Histogram"),
-    "Radar Chart": st.sidebar.checkbox("Radar Chart")
-# }
+    "Radar Chart": st.sidebar.checkbox("Radar Chart") }
 
 # # st.sidebar.radio('',['Finance','Supply chain',
 # # 'Revenue growth','IT ops', 'SDLC'])
